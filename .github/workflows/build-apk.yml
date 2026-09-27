@@ -20,14 +20,17 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.47.5' 
+          flutter-version: '3.47.5'
           channel: 'stable'
 
       - name: Install dependencies
         run: flutter pub get
+        # Si tu proyecto está en una subcarpeta, descomenta la siguiente línea y pon su nombre:
+        # working-directory: nombre-de-tu-subcarpeta
 
       - name: Build APK
         run: flutter build apk --release
+        # working-directory: nombre-de-tu-subcarpeta
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
